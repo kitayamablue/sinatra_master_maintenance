@@ -1,0 +1,36 @@
+%h2 商品一覧
+%form{:method => "post", :action => "new"}
+	%input{:type => "text", :name => "sku", :size => "100"}
+	%button{:type => "submit"} 検索
+	%p
+
+%div{:class => "containar"}
+	%table{:border => 1, :class => "table table-striped table-hover table-bordered"}
+		%thead
+			%tr
+				%th 庫内統一品番
+				%th 品名
+				%th カテゴリ
+				%th 高さ(ミリ)
+				%th 幅(ミリ)
+				%th 奥行(ミリ)
+				%th 重さ(㌘)
+				%th 注意メッセージ
+				%th 写真
+		%tbody
+			- @products.each do |product|
+				%tr
+					%td= product.SKU
+					%td= product.Hinmei
+					%td= product.Category
+					%td= product.Height
+					%td= product.Width
+					%td= product.Depth
+					%td= product.Weight
+					%td= product.WarningMsg
+					%td
+						%a{:href => "http://seigiftp/pic/" + product.SKU + ".jpg", :rel => "lightbox", :title => product.Hinmei, :width => "800"}
+							%img{:src => "http://seigiftp/pic/" + product.SKU + ".jpg", :width => "80", :onError => "this.src='http://seigiftp/pic/now_printing.gif'"}
+						
+:erb
+		<%= will_paginate @products , :renderer => PaginateRenderer %>

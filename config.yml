@@ -1,0 +1,6 @@
+development:
+  adapter:  "sqlserver"
+  host:     "172.30.15.45"
+  username: "sa"
+  password: "kmruty"
+  database: "hvdb"

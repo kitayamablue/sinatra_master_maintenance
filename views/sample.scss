@@ -1,0 +1,12 @@
+$header_back_color:  #008080;
+$header_fore_color:  white;
+
+
+@mixin header{
+	background-color: $header_back_color;
+	color: $header_fore_color;
+}
+
+thead{
+	@include header;
+}
